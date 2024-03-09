@@ -8,14 +8,12 @@ class MainListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.25,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 24),
-        child: ListView.builder(
-            itemCount: 5,
-            physics: const BouncingScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            itemBuilder: ((context, index) => const MainListViewItem())),
-      ),
+      child: ListView.builder(
+          padding: EdgeInsets.zero,
+          itemCount: 10,
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemBuilder: ((context, index) => const MainListViewItem())),
     );
   }
 }
