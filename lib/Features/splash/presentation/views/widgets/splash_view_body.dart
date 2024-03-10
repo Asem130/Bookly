@@ -1,13 +1,11 @@
-
-
-
 import 'package:bookly/Features/home/presentaion/views/home_view.dart';
 import 'package:bookly/Features/splash/presentation/views/widgets/logo_sliding_animation.dart';
 import 'package:bookly/Features/splash/presentation/views/widgets/text_sliding_animation.dart';
 import 'package:bookly/constants.dart';
+import 'package:bookly/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -44,12 +42,10 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-       
         LogoSlidingAnimation(logoSlidingAnimation: logoSlidingAnimation),
         const SizedBox(
           height: 4,
         ),
-        
         TextSlidingAnimation(textSlidingAnimation: textSlidingAnimation),
       ],
     );
@@ -82,7 +78,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void goToHomeView() {
     Future.delayed(kDuration, () {
-      Get.to(const HomeView(), transition: Transition.zoom);
+      GoRouter.of(context).push(AppRouter.kHomeView);
     });
   }
 }
