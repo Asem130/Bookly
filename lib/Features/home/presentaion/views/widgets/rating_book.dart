@@ -1,14 +1,17 @@
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RatingBook extends StatelessWidget {
-  const RatingBook({super.key});
-
+  const RatingBook(
+      {super.key, this.mainAxisAlignment = MainAxisAlignment.start});
+  final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      children: [
+    return Row(
+      mainAxisAlignment: mainAxisAlignment,
+      children: const [
         Icon(
           FontAwesomeIcons.solidStar,
           size: 16,
@@ -24,9 +27,12 @@ class RatingBook extends StatelessWidget {
         SizedBox(
           width: 5.3,
         ),
-        Text(
-          '(245)',
-          style: Styles.textStyle14,
+        Opacity(
+          opacity: 0.7,
+          child: Text(
+            '(245)',
+            style: Styles.textStyle14,
+          ),
         ),
       ],
     );
