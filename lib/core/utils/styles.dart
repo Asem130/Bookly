@@ -15,13 +15,9 @@ abstract class Styles {
     fontSize: 14,
   );
   static const textStyle27 = TextStyle(
-    fontSize: 27,
-    fontWeight: FontWeight.w600,
-    fontFamily: kMontaguSlab
-  );
+      fontSize: 27, fontWeight: FontWeight.w600, fontFamily: kMontaguSlab);
   static const textStyle16 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
-
   );
 }
