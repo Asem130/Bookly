@@ -1,4 +1,11 @@
-abstract class Failures
-{}
+import 'package:dio/dio.dart';
 
-class ServerFailure extends Failures{}
+abstract class Failures {
+  final String errorMessage;
+
+  const Failures(this.errorMessage);
+}
+
+class ServerFailure extends Failures {
+  ServerFailure(super.errorMessage);
+}

@@ -9,20 +9,33 @@ class HomeRepoImplementaion implements HomeRepo {
 
   HomeRepoImplementaion({required this.apiService});
   @override
-  Future<Either<ServerFailure,List<BookModel>>> fetchNewsetBooks() async {
+  Future<Either<ServerFailure, List<BookModel>>> fetchNewsetBooks() async {
     try {
       var data = await apiService.get(
-          endPoint: 'volumes?Filtering=free-ebooks&q=subject:Programming&Sorting=newset');
+          endPoint:
+              'volumes?Filtering=free-ebooks&q=subject:Programming&Sorting=newset');
       List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
       }
       return right(books);
     } catch (e) {
-      return left(ServerFailure());
+      return left(ServerFailure('error'));
     }
   }
 
   @override
-  Future<Either<ServerFailure, BookModel>> fetchMainBookList() {}
+  Future<Either<ServerFailure, List<BookModel>>> fetchMainBookList() async {
+    try {
+      var data = await apiService.get(
+          endPoint: 'volumes?Filtering=free-ebooks&q=subject:Programming');
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } catch (e) {
+      return left(ServerFailure('error'));
+    }
+  }
 }
