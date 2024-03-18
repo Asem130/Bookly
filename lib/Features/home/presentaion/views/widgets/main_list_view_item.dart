@@ -1,19 +1,29 @@
-import 'package:bookly/core/utils/assets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class MainListViewItem extends StatelessWidget {
-  const MainListViewItem({super.key, this.borderRadius});
+  const MainListViewItem(
+      {super.key, this.borderRadius, required this.imageUrl});
   final BorderRadius? borderRadius;
-
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 2.7 / 4,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: borderRadius ?? BorderRadius.circular(16),
-          image: const DecorationImage(
-              fit: BoxFit.cover, image: AssetImage(AssetesData.testImage)),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: AspectRatio(
+        aspectRatio: 2.7 / 4,
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.fill,
+          placeholder: (context, url) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          errorWidget: (
+            context,
+            url,
+            error,
+          ) =>
+              const Icon(Icons.error),
         ),
       ),
     );

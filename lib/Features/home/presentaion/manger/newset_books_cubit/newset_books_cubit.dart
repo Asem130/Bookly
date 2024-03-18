@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class NewsetBooksCubit extends Cubit<NewsetListViewBookStates> {
   NewsetBooksCubit(this.homeRepo) : super(NewstInistialState());
   final HomeRepo homeRepo;
-  Future<void> getMainBooksListView() async {
+  Future<void> getNewsrtListView() async {
     emit(NewstLoadingState());
     var result = await homeRepo.fetchNewsetBooks();
     result.fold(

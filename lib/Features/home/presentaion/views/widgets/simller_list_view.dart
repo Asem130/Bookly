@@ -15,7 +15,7 @@ class SimllerListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: ((context, index) => Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: MainListViewItem(
+              child: MainListViewItem(imageUrl: 'https://www.facebook.com/photo/?fbid=1823615934725992&set=a.122930848127851',
                 borderRadius: BorderRadius.circular(8),
               ),
             )),

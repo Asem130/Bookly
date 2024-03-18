@@ -15,5 +15,5 @@ final class SuccsessState extends MainListViewBookStates {
 final class FailureState extends MainListViewBookStates {
   final String errorMessage;
 
-  FailureState(this.errorMessage);
+  FailureState({required this.errorMessage});
 }

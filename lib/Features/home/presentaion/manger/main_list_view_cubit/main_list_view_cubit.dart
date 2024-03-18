@@ -10,13 +10,11 @@ class MainListViewBooksCubit extends Cubit<MainListViewBookStates> {
     var result = await homeRepo.fetchMainBookList();
     result.fold(
       (failure) {
-        emit(FailureState('error'));
+        emit(FailureState(errorMessage: 'error'));
       },
-      (books) => {
-        emit(
-          SuccsessState(books),
-        ),
-      },
+      (books) => emit(
+        SuccsessState(books),
+      ),
     );
   }
 }
